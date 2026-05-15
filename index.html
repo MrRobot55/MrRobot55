@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MrRobot55</title>
+<style>
+:root {
+  --bg: #0d0f12;
+  --surface: #13161b;
+  --border: rgba(255,255,255,.07);
+  --border-md: rgba(255,255,255,.12);
+  --text-1: #e8eaf0;
+  --text-2: #8b91a0;
+  --text-3: #555d6e;
+  --accent: #3b8de8;
+  --accent-bg: #1a3a5c;
+  --accent-bd: #2a5080;
+  --green: #3dba7a;
+  --green-bg: #0d2a18;
+}
+[data-theme="light"] {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --border: rgba(0,0,0,.08);
+  --border-md: rgba(0,0,0,.14);
+  --text-1: #0f1117;
+  --text-2: #4b5263;
+  --text-3: #9099aa;
+  --accent: #185FA5;
+  --accent-bg: #E6F1FB;
+  --accent-bd: #B5D4F4;
+  --green: #27500A;
+  --green-bg: #EAF3DE;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background .2s, color .2s;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+/* TOPBAR */
+.topbar {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 24px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.toggle {
+  width: 36px; height: 20px;
+  background: var(--border-md);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background .2s;
+}
+.toggle::after {
+  content: '';
+  width: 14px; height: 14px;
+  background: var(--text-3);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px; left: 3px;
+  transition: left .2s, background .2s;
+}
+[data-theme="light"] .toggle::after { left: 19px; background: var(--accent); }
+
+/* HERO */
+.hero {
+  padding: 56px 0 48px;
+}
+.avatar {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  border: 2px solid var(--accent-bd);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 600; color: var(--accent);
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-1);
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 14px;
+  color: var(--text-2);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+/* SECTIONS */
+.section { padding-bottom: 52px; }
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-3);
+  margin-bottom: 14px;
+}
+
+/* PROJECTS */
+.projects { display: flex; flex-direction: column; gap: 6px; }
+.project {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  transition: border-color .15s;
+}
+.project:hover { border-color: var(--accent-bd); text-decoration: none; }
+.project-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--accent-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.project-body { flex: 1; }
+.project-name { font-size: 13px; font-weight: 500; color: var(--text-1); margin-bottom: 2px; }
+.project-desc { font-size: 12px; color: var(--text-2); }
+.project-arrow { color: var(--text-3); font-size: 14px; flex-shrink: 0; }
+
+/* CV SERVEURS */
+.servers { display: flex; flex-direction: column; gap: 6px; }
+.server {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.server-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.server-icon.mc { background: #1a2e1a; }
+.server-icon.fivem { background: #1a1e2e; }
+.server-body { flex: 1; }
+.server-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
+.server-name { font-size: 13px; font-weight: 500; color: var(--text-1); }
+.server-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 20px;
+  letter-spacing: .04em;
+}
+.tag-mc { background: #1a3a1a; color: #5ecb5e; border: 1px solid #2a5a2a; }
+.tag-fivem { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-bd); }
+.server-role { font-size: 12px; color: var(--text-2); }
+.server-period { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-3);
+}
+.status-link {
+  font-size: 12px;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.status-link:hover { color: var(--text-2); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+
+@media (max-width: 500px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 36px 0 32px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="toggle" id="toggle" aria-label="Changer le thème"></button>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar">MR</div>
+    <h1>MrRobot55</h1>
+    <p>Passionné de roleplay et d'administration de serveurs de jeux. Je développe des outils web pour enrichir l'expérience RP — portails, bases de données, outils terrain — hébergés sur mon propre serveur dédié.</p>
+  </div>
+
+  <!-- PROJETS -->
+  <div class="section">
+    <div class="section-title">Projets</div>
+    <div class="projects">
+
+      <a href="https://doj.mrrobot55.fr" class="project" target="_blank" rel="noopener">
+        <div class="project-icon">⚖️</div>
+        <div class="project-body">
+          <div class="project-name">DOJ Portal</div>
+          <div class="project-desc">Portail intranet du Département de Justice — serveur GTA V RP</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://jurilog.mrrobot55.fr" class="project" target="_blank" rel="noopener">
+        <div class="project-icon">📖</div>
+        <div class="project-body">
+          <div class="project-name">JuriLog</div>
+          <div class="project-desc">Référence interactive du Code Pénal de San Andreas</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://wisefa.mrrobot55.fr" class="project" target="_blank" rel="noopener">
+        <div class="project-icon">🚔</div>
+        <div class="project-body">
+          <div class="project-name">Wise FA — Outil SASP</div>
+          <div class="project-desc">Calculateur de peines, journal de procédure et rapports d'intervention</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://intranet.mrrobot55.fr" class="project" target="_blank" rel="noopener">
+        <div class="project-icon">🗄️</div>
+        <div class="project-body">
+          <div class="project-name">Intranet DOJ</div>
+          <div class="project-desc">Base de données interne — Baserow self-hosted</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a href="https://wiki.mrrobot55.fr" class="project" target="_blank" rel="noopener">
+        <div class="project-icon">📝</div>
+        <div class="project-body">
+          <div class="project-name">Wiki DOJ</div>
+          <div class="project-desc">Documentation interne du Département de Justice</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CV SERVEURS -->
+  <div class="section">
+    <div class="section-title">Expériences RP &amp; Staff</div>
+    <div class="servers">
+
+      <!-- ============================================================ -->
+      <!-- EXEMPLE MINECRAFT — duplique ce bloc pour chaque serveur MC  -->
+      <!-- ============================================================ -->
+      <div class="server">
+        <div class="server-icon mc">🌿</div>
+        <div class="server-body">
+          <div class="server-top">
+            <span class="server-name">Nom du serveur</span>
+            <span class="server-tag tag-mc">Minecraft</span>
+          </div>
+          <div class="server-role">Poste occupé — ex: Modérateur, Admin, Builder</div>
+          <div class="server-period">Période — ex: 2021 – 2022</div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- EXEMPLE FIVEM — duplique ce bloc pour chaque serveur FiveM   -->
+      <!-- ============================================================ -->
+      <div class="server">
+        <div class="server-icon fivem">🚗</div>
+        <div class="server-body">
+          <div class="server-top">
+            <span class="server-name">Nom du serveur</span>
+            <span class="server-tag tag-fivem">FiveM</span>
+          </div>
+          <div class="server-role">Poste occupé — ex: Officier LSPD, Procureur, Staff</div>
+          <div class="server-period">Période — ex: 2023 – 2024</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 MrRobot55</span>
+    <a href="https://monitor.mrrobot55.fr/status/mrrobot55" class="status-link" target="_blank" rel="noopener">
+      <span class="dot"></span> Tous les services opérationnels
+    </a>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const saved = localStorage.getItem('mr_theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+})();
+document.getElementById('toggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('mr_theme', next);
+});
+</script>
+</body>
+</html>
