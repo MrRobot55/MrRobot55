@@ -91,6 +91,8 @@ a:hover { text-decoration: underline; }
   font-size: 20px; font-weight: 600; color: var(--accent);
   margin-bottom: 18px;
   flex-shrink: 0;
+  overflow: hidden;
+  object-fit: cover;
 }
 .hero h1 {
   font-size: 26px;
@@ -182,6 +184,9 @@ a:hover { text-decoration: underline; }
 .server-role { font-size: 12px; color: var(--text-2); }
 .server-period { font-size: 11px; color: var(--text-3); margin-top: 2px; }
 
+.server-history { display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
+.server-entry:not(:last-child) { padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
@@ -248,7 +253,7 @@ footer {
 
   <!-- HERO -->
   <div class="hero">
-    <div class="avatar">MR</div>
+    <img class="avatar" src="avatar.jpg" alt="Photo de profil">
     <h1>MrRobot55</h1>
     <p>Passionné de roleplay et d'administration de serveurs de jeux. Je développe des outils web pour enrichir l'expérience RP — portails, bases de données, outils terrain — hébergés sur mon propre serveur dédié.</p>
   </div>
@@ -284,33 +289,93 @@ footer {
     <div class="section-title">Expériences RP &amp; Staff</div>
     <div class="servers">
 
-      <!-- ============================================================ -->
-      <!-- EXEMPLE MINECRAFT — duplique ce bloc pour chaque serveur MC  -->
-      <!-- ============================================================ -->
+      <!-- WISEFA — SASP -->
       <div class="server">
-        <div class="server-icon mc">🌿</div>
+        <div class="server-icon fivem">🚔</div>
         <div class="server-body">
           <div class="server-top">
-            <span class="server-name">Nom du serveur</span>
-            <span class="server-tag tag-mc">Minecraft</span>
+            <span class="server-name">WiseFA — Alexander WHITE (matricule 60)</span>
+            <span class="server-tag tag-fivem">FiveM</span>
           </div>
-          <div class="server-role">Poste occupé — ex: Modérateur, Admin, Builder</div>
-          <div class="server-period">Période — ex: 2021 – 2022</div>
+          <div class="server-history">
+            <div class="server-entry">
+              <div class="server-role">Senior Lead Officier (SLO) — SASP</div>
+              <div class="server-period">29/06/2026 - ce jour</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Superviseur — Police Academy</div>
+              <div class="server-period">20/06/2026 - ce jour</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Officier III — SASP</div>
+              <div class="server-period">14/06/2026 - 29/06/2026</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Officier II — SASP</div>
+              <div class="server-period">31/05/2026 - 14/06/2026</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Intégration Police Academy</div>
+              <div class="server-period">23/05/2026 - 20/06/2026</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Officier I — SASP</div>
+              <div class="server-period">13/05/2026 - 31/05/2026</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Recrutement — SASP</div>
+              <div class="server-period">04/05/2026 - 13/05/2026</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- EXEMPLE FIVEM — duplique ce bloc pour chaque serveur FiveM   -->
-      <!-- ============================================================ -->
+      <!-- REDSTART RP -->
       <div class="server">
-        <div class="server-icon fivem">🚗</div>
+        <div class="server-icon fivem">🎭</div>
         <div class="server-body">
           <div class="server-top">
-            <span class="server-name">Nom du serveur</span>
+            <span class="server-name">RedStart RP</span>
             <span class="server-tag tag-fivem">FiveM</span>
           </div>
-          <div class="server-role">Poste occupé — ex: Officier LSPD, Procureur, Staff</div>
-          <div class="server-period">Période — ex: 2023 – 2024</div>
+          <div class="server-history">
+            <div class="server-entry">
+              <div class="server-role">San Andreas Medical Service — Hauts Gradés (dir-adj/med-chef)</div>
+              <div class="server-period">11/01/2025 - ce jour</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Gruppe 6 — Agent de sécurité</div>
+              <div class="server-period">30/10/2024 - 10/12/2024</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Downtown Cab Co — Taxi Man</div>
+              <div class="server-period">12/09/2024 - 11/10/2024</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">San Andreas Medical Service — Directeur Adjoint</div>
+              <div class="server-period">25/02/2023 - 21/08/2024</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Bureau du Procureur — Substitut du Procureur</div>
+              <div class="server-period">30/01/2023 - 24/02/2023</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">San Andreas Medical Service — Directeur Adjoint</div>
+              <div class="server-period">07/05/2022 - 22/01/2023</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Los Santos Police Department — Officier</div>
+              <div class="server-period">13/03/2022 - 07/05/2022</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Barreau de San Andreas — Avocat</div>
+              <div class="server-period">07/02/2022 - 09/03/2022</div>
+            </div>
+            <div class="server-entry">
+              <div class="server-role">Sans emploi — Intérimaire</div>
+              <div class="server-period">11/2021 - 07/02/2022</div>
+            </div>
+          </div>
         </div>
       </div>
 
