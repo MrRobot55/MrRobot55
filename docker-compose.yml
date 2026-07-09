@@ -1,0 +1,26 @@
+# =============================================================================
+#  mrrobot55.fr — site vitrine statique
+#  Stack indépendante (extraite du monorepo DOJ le 2026-07-09)
+# =============================================================================
+
+services:
+  mrrobot55:
+    image: nginx:alpine
+    container_name: doj_mrrobot55
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    expose:
+      - "80"
+    networks:
+      - doj_network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  doj_network:
+    external: true
+    name: doj_doj_network
